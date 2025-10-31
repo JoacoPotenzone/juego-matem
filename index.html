@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío Matemático</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <h1 class="game-title">🔢 Desafío Matemático</h1>
+        
+        <div id="score-container" class="score-display">
+            Puntuación: <span id="score">0</span>
+        </div>
+
+        <div id="question-container" class="card question-card">
+            <p id="question-text"></p>
+        </div>
+
+        <div id="answer-container" class="answer-section">
+            <div id="options-container" class="options-grid"></div>
+
+            <div id="exercise-container" class="exercise-input-group">
+                <input type="text" id="exercise-input" placeholder="Ingresa tu respuesta aquí...">
+                <button id="submit-btn" class="action-button primary-button">Enviar</button>
+            </div>
+        </div>
+
+        <div id="feedback" class="feedback-message"></div>
+
+        <button id="next-btn" class="action-button secondary-button hidden">
+            Siguiente Pregunta <i class="fas fa-arrow-right"></i>
+        </button>
+
+        <div id="results-container" class="card results-card hidden">
+            <h2>🎉 Juego Terminado 🎉</h2>
+            <p>Tu puntuación final es: <span id="final-score"></span></p>
+            <button id="restart-btn" class="action-button primary-button">Volver a Jugar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
