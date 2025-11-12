@@ -1,36 +1,36 @@
-/* --- Variables CSS para fácil personalización --- */
+/* --- Variables CSS para fácil personalización (Nueva Paleta) --- */
 :root {
-    --primary-color: #4CAF50; /* Verde vibrante */
-    --secondary-color: #2196F3; /* Azul para acciones secundarias */
-    --background-color: #e0f2f7; /* Azul claro suave */
+    --primary-color: #e76f8e; /* Rosa vibrante */
+    --secondary-color: #a77dc2; /* Lila suave */
+    --background-color: #f7e9e9; /* Beige rosado muy claro */
     --card-background: #ffffff;
-    --text-color: #333;
-    --light-text-color: #666;
-    --border-color: #ddd;
-    --correct-color: #4CAF50; /* Verde éxito */
-    --incorrect-color: #f44336; /* Rojo error */
-    --button-hover-darken: 10%; /* Porcentaje para oscurecer al hover */
+    --text-color: #555; /* Gris oscuro suave */
+    --light-text-color: #888;
+    --border-color: #e0d0d0; /* Borde suave */
+    --correct-color: #7bce7b; /* Verde para éxito (sigue siendo importante que contraste) */
+    --incorrect-color: #ff8a80; /* Rojo suave para error */
+    --button-hover-darken: 10%;
 
     --spacing-sm: 10px;
     --spacing-md: 20px;
     --spacing-lg: 30px;
 
-    --border-radius: 12px;
-    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.15);
+    --border-radius: 15px; /* Bordes un poco más redondeados */
+    --shadow-light: 0 5px 20px rgba(0, 0, 0, 0.08); /* Sombra más suave */
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 /* --- Estilos Generales --- */
 body {
-    font-family: 'Poppins', sans-serif; /* Fuente moderna */
+    font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     margin: 0;
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden; /* Evitar scroll horizontal */
+    padding: var(--spacing-lg); /* Añadimos padding general */
+    box-sizing: border-box; /* Importante para que el padding no desborde */
 }
 
 .game-container {
@@ -38,12 +38,13 @@ body {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
     padding: var(--spacing-lg);
-    width: 90%;
-    max-width: 650px; /* Un poco más amplio para contenido */
+    width: 95%;
+    max-width: 600px; /* Un poco más compacto */
     text-align: center;
     position: relative;
-    overflow: hidden; /* Para cualquier elemento que se desborde */
+    overflow: hidden;
     animation: fadeIn 0.8s ease-out;
+    border: 2px solid var(--border-color); /* Un borde más definido */
 }
 
 @keyframes fadeIn {
@@ -53,23 +54,25 @@ body {
 
 /* --- Títulos --- */
 .game-title {
-    font-size: 2.5em;
+    font-size: 2.8em; /* Más grande */
     color: var(--primary-color);
     margin-bottom: var(--spacing-md);
     font-weight: 700;
     letter-spacing: -0.5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.05); /* Sombra de texto suave */
 }
 
-/* --- Puntuación --- */
-.score-display {
-    font-size: 1.3em;
+/* --- Puntuación y Nivel --- */
+.score-display, .level-display {
+    font-size: 1.4em;
     font-weight: 600;
     color: var(--light-text-color);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm); /* Menos espacio entre ellos */
 }
 
-#score {
+#score, #level {
     color: var(--primary-color);
+    font-weight: 700;
 }
 
 /* --- Tarjeta de Pregunta --- */
@@ -79,121 +82,63 @@ body {
     box-shadow: var(--shadow-light);
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-md);
-}
-
-.question-card {
-    min-height: 80px; /* Altura mínima para evitar saltos */
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: 1px solid var(--border-color);
 }
 
+.question-card {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff9f9; /* Fondo muy claro para la pregunta */
+}
+
 #question-text {
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 600;
     color: var(--text-color);
     margin: 0;
+    line-height: 1.3;
 }
 
-/* --- Sección de Respuestas --- */
+/* --- Sección de Respuestas (Ahora solo ejercicios) --- */
 .answer-section {
     margin-top: var(--spacing-md);
 }
 
-/* Opciones de Teoría (Grid) */
-.options-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Una columna por defecto */
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
-}
-
-@media (min-width: 480px) {
-    .options-grid {
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas más grandes */
-    }
-}
-
-.option-btn {
-    display: flex; /* Para centrar texto si es necesario */
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 1.1em;
-    background-color: #f0f0f0;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-height: 50px;
-    color: var(--text-color);
-    font-weight: 500;
-    text-align: left; /* Alineación del texto */
-}
-
-.option-btn:hover:not(:disabled) {
-    background-color: #e0e0e0;
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px); /* Pequeño efecto 3D */
-}
-
-.option-btn:disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-/* Estilos para estado de respuesta */
-.option-btn.correct-feedback {
-    background-color: var(--correct-color);
-    color: white;
-    border-color: var(--correct-color);
-    box-shadow: var(--shadow-light);
-}
-
-.option-btn.incorrect-feedback {
-    background-color: var(--incorrect-color);
-    color: white;
-    border-color: var(--incorrect-color);
-    box-shadow: var(--shadow-light);
-}
-
-
-/* Input de Ejercicio */
 .exercise-input-group {
     display: flex;
-    flex-direction: column; /* Apilar en móviles */
+    flex-direction: column;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
 }
 
 @media (min-width: 480px) {
     .exercise-input-group {
-        flex-direction: row; /* En línea en pantallas más grandes */
+        flex-direction: row;
     }
 }
 
 #exercise-input {
-    flex-grow: 1; /* Ocupa el espacio restante */
+    flex-grow: 1;
     padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 1.1em;
+    font-size: 1.2em; /* Un poco más grande */
     border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
-    outline: none; /* Eliminar el borde de enfoque predeterminado */
+    outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Centrar texto en el input */
 }
 
 #exercise-input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary-color) 25%, transparent);
 }
 
 /* --- Botones de Acción --- */
 .action-button {
     padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 1.1em;
+    font-size: 1.2em; /* Más grande */
     font-weight: 600;
     border: none;
     border-radius: var(--border-radius);
@@ -203,6 +148,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 0.5px;
 }
 
 .primary-button {
@@ -212,8 +159,8 @@ body {
 }
 
 .primary-button:hover:not(:disabled) {
-    background-color: color-mix(in srgb, var(--primary-color) 90%, black); /* Oscurecer al hover */
-    transform: translateY(-2px);
+    background-color: color-mix(in srgb, var(--primary-color) 90%, black);
+    transform: translateY(-3px); /* Más pronunciado */
     box-shadow: var(--shadow-hover);
 }
 
@@ -225,25 +172,27 @@ body {
 
 .secondary-button:hover:not(:disabled) {
     background-color: color-mix(in srgb, var(--secondary-color) 90%, black);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-hover);
 }
 
 .action-button:disabled {
-    opacity: 0.6;
+    opacity: 0.5; /* Más tenue */
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* Iconos en botones */
 .action-button i {
-    margin-left: 5px;
+    margin-left: 8px; /* Más espacio */
 }
 
 /* --- Mensaje de Feedback --- */
 .feedback-message {
-    font-size: 1.2em;
-    font-weight: 600;
-    min-height: 30px; /* Mantiene el espacio */
+    font-size: 1.3em; /* Más grande */
+    font-weight: 700; /* Más énfasis */
+    min-height: 35px;
     margin-top: var(--spacing-sm);
     animation: fadeAndScale 0.4s ease-out;
 }
@@ -252,7 +201,6 @@ body {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
-
 
 .feedback-message.correct {
     color: var(--correct-color);
@@ -266,16 +214,17 @@ body {
 .results-card {
     padding: var(--spacing-lg);
     border: 1px solid var(--border-color);
+    background-color: #fff9f9;
 }
 
 .results-card h2 {
-    font-size: 2em;
+    font-size: 2.2em;
     color: var(--primary-color);
     margin-bottom: var(--spacing-sm);
 }
 
 .results-card p {
-    font-size: 1.3em;
+    font-size: 1.4em;
     color: var(--light-text-color);
     margin-bottom: var(--spacing-md);
 }
@@ -290,6 +239,34 @@ body {
     display: none !important;
 }
 
+/* Feedback para el input de ejercicio */
+#exercise-input.correct-feedback {
+    border-color: var(--correct-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--correct-color) 25%, transparent);
+}
+
+#exercise-input.incorrect-feedback {
+    border-color: var(--incorrect-color);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--incorrect-color) 25%, transparent);
+}
+
+/* Estilos para las imágenes de perritos */
+.dog-image {
+    max-width: 150px; /* Tamaño máximo para la imagen del perro */
+    height: auto;
+    margin-top: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    animation: bounceIn 0.5s ease-out;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
 /* --- Responsive Design Básico --- */
 @media (max-width: 600px) {
     .game-container {
@@ -297,18 +274,112 @@ body {
     }
 
     .game-title {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     #question-text {
-        font-size: 1.3em;
+        font-size: 1.4em;
     }
 
     .action-button {
-        width: 100%; /* Botones de bloque en móviles */
+        width: 100%;
+        font-size: 1.1em;
     }
 
     .exercise-input-group {
         flex-direction: column;
+    }
+
+    #exercise-input {
+        font-size: 1.1em;
+    }
+
+    .feedback-message {
+        font-size: 1.1em;
+    }
+}
+.app-wrapper {
+    display: flex;
+    flex-direction: row; /* Lado a lado en desktop */
+    justify-content: center;
+    align-items: flex-start; /* Alinea los items arriba */
+    gap: var(--spacing-lg);
+    width: 100%;
+    max-width: 1100px; /* Ancho máximo para juego + leyenda */
+    margin: 0 auto; /* Centra el wrapper */
+}
+
+/* --- NUEVO: Tarjeta de Leyenda --- */
+.legend-card {
+    width: 300px;
+    flex-shrink: 0; /* Evita que se encoja */
+    padding: var(--spacing-md);
+    background-color: #fff9f9;
+    
+    /* Efecto "pegajoso" para que te siga al scrollear */
+    position: sticky; 
+    top: var(--spacing-lg); 
+}
+
+.legend-card h3 {
+    color: var(--secondary-color); /* Color lila */
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+.legend-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.legend-card li {
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+}
+
+.legend-card li span {
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+.legend-card p {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+    margin-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--spacing-md);
+}
+
+/* --- AJUSTE: Responsive Design --- */
+/* Necesitamos un nuevo breakpoint para reordenar las columnas */
+
+@media (max-width: 950px) {
+    .app-wrapper {
+        flex-direction: column-reverse; /* Apila las columnas (leyenda abajo) */
+        align-items: center; /* Centra todo en móvil */
+    }
+
+    .game-container {
+        width: 100%; /* Ocupa todo el ancho disponible */
+    }
+
+    .legend-card {
+        width: 100%;
+        max-width: 600px; /* Mismo ancho que el game-container */
+        position: static; /* Quita el "sticky" en móvil */
+        margin-top: 0;
+        margin-bottom: var(--spacing-lg);
     }
 }

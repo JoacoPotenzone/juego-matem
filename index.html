@@ -3,46 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafío Matemático</title>
+    <title>Desafío Matemático 🐾</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="game-container">
-        <h1 class="game-title">🔢 Desafío Matemático</h1>
-        
-        <div id="score-container" class="score-display">
-            Puntuación: <span id="score">0</span>
-        </div>
+    <div class="app-wrapper">
 
-        <div id="question-container" class="card question-card">
-            <p id="question-text"></p>
-        </div>
-
-        <div id="answer-container" class="answer-section">
-            <div id="options-container" class="options-grid"></div>
-
-            <div id="exercise-container" class="exercise-input-group">
-                <input type="text" id="exercise-input" placeholder="Ingresa tu respuesta aquí...">
-                <button id="submit-btn" class="action-button primary-button">Enviar</button>
+        <div class="game-container">
+            <h1 class="game-title">🔢 Desafío de Fracciones</h1>
+            
+            <div id="score-container" class="score-display">
+                Puntuación: <span id="score">0</span>
             </div>
+            <div id="level-container" class="level-display">
+                Nivel: <span id="level">1</span>
+            </div>
+
+            <div id="question-container" class="card question-card">
+                <p id="question-text"></p>
+            </div>
+
+            <div id="answer-container" class="answer-section">
+                <div id="exercise-container" class="exercise-input-group">
+                    <input type="text" id="exercise-input" placeholder="Tu respuesta (ej: 5/3 o -2)">
+                    <button id="submit-btn" class="action-button primary-button">Enviar</button>
+                </div>
+            </div>
+
+            <div id="feedback" class="feedback-message"></div>
+            <img id="dog-img" class="dog-image hidden" src="" alt="¡Genial!">
+
+            <button id="next-btn" class="action-button secondary-button hidden">
+                Siguiente Nivel <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <div id="results-container" class="card results-card hidden">
+                <h2>🎉 ¡Juego Terminado! 🎉</h2>
+                <p>Completaste todos los niveles.</p>
+                <p>Tu puntuación final es: <span id="final-score"></span></p>
+                <button id="restart-btn" class="action-button primary-button">Volver a Jugar</button>
+            </div>
+        </div> <div class="legend-card card">
+            <h3>Ayuda Rápida 💡</h3>
+            <ul>
+                <li><span>*</span> es para <span><strong> Multiplicar</strong></span></li>
+                <li><span>/</span> es para <span><strong> Dividir</strong></span> </li>
+                <li>(ej: 2/3)</li>
+                <li><span>+</span> es para <span><strong> Sumar</strong></span></li>
+                <li><span>-</span> es para <span><strong> Restar</strong></span></li>
+                <li><span>.</span> para números decimales (ej: 0.5)</li>
+            </ul>
+            <p>¡Puedes responder con fracciones (ej: 5/3) o con el número decimal (ej: 1.66)!</p>
         </div>
 
-        <div id="feedback" class="feedback-message"></div>
-
-        <button id="next-btn" class="action-button secondary-button hidden">
-            Siguiente Pregunta <i class="fas fa-arrow-right"></i>
-        </button>
-
-        <div id="results-container" class="card results-card hidden">
-            <h2>🎉 Juego Terminado 🎉</h2>
-            <p>Tu puntuación final es: <span id="final-score"></span></p>
-            <button id="restart-btn" class="action-button primary-button">Volver a Jugar</button>
-        </div>
-    </div>
-
+    </div> <audio id="success-sound" src="./Lady Gaga - Bad Romance (Official Music Video).mp3"></audio> 
     <script src="script.js"></script>
 </body>
 </html>
